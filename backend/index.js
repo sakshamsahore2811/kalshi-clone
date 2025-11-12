@@ -13,11 +13,12 @@ app.get('/',(req,res)=>{
 });
 
 app.get('/wallet',async(req,res)=>{
-    const { data, error } = await supabase
-  .from('event')
-  .select('*')
-    res.send(`This is your wallet : ${data}`);
-
+    console.log("/wallet endpoint hit");
+   const { data, error } = await supabase
+  .from('wallet')
+  .select()
+ console.log(`${data}`);
+  res.send(`This is your wallet : ${JSON.stringify(data, null, 2)}`);
   if (error) {
     console.error('Supabase error:', error);
     return res.status(500).json({ error: error.message });
