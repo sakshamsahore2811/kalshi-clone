@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const PORT = 3000 || process.env.PORT;
+const cors = require('cors');
 
-const supabase = require('./config/dbConn');
+app.use(cors());
 
 const { logger, loggerMiddleware } = require('./middleware/logger');
 app.use(express.json());
